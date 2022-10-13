@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Event 1",
+    "date": "8/17/2022",
+    "description": "You are invited to my party",
+    "type": "Birthday"
+  },
+  {
+    "name": "Event 2",
+    "date": "8/19/2022",
+    "description": "Bob's Retirement",
+    "type": "Work"
+  }
+]

@@ -1,13 +1,18 @@
-import React, { FC, useState } from 'react';
+import React, { FC, ReactElement, useEffect, useState } from 'react';
 import Day from '../Day/Day';
 import './Calendar.css';
 
 export interface CalendarProps {
   event?: object;
+  events?: object;
+}
+
+
+const GetEvents = () => {
 }
 
 const GetDateObjects = () => {
-  const [monthObj, setMonthObj] = useState([]);
+  //const [monthObj, setMonthObj] = useState(Array<Date>)
   /* new Date(year, monthIndex, day)
   Sets up the calendar dates for the month.
   
@@ -30,12 +35,41 @@ const GetDateObjects = () => {
 
 }
 
-const Calendar: FC<CalendarProps> = (props) => (
+//const Calendar: FC<CalendarProps> = (props) => (
+const Calendar: FC<CalendarProps> = (props): ReactElement => {
+  const [events, setEvents] = useState([]);
+  const [needEvents, setNeedEvents] = useState(false);
+
+  useEffect(() => {
+    // Prevent duplicate API calls
+    if (!needEvents) {
+      setNeedEvents(true);
+    }
+  }, [needEvents])
+
+  useEffect(() => {
+    if (!needEvents) {
+      return
+    }
+
+    fetch('/events.json')
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw response;
+    })
+    .then(data => {
+      setEvents(data);
+    })
+  }, [needEvents])
+
+  return (
   <div className="Calendar" data-testid="Calendar">
     {GetDateObjects().map((datetime, index) => 
-      <Day date={datetime.getDate()} />
+      <Day date={datetime.getDate()} event={events[index]} key={index} />
     )}
-  </div>
-);
+  </div>)
+}
 
 export default Calendar;
