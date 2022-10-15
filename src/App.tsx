@@ -2,6 +2,7 @@ import React, { FC, ReactElement, useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Calendar from './components/Calendar/Calendar';
+import Card from '@mui/material/Card';
 
 export interface EventObject {
   name: string;
@@ -30,12 +31,14 @@ const App: FC = (): ReactElement => {
     <div className="App">
       <Calendar showEvent={showEvent} />
       { hasEvent && (
-        <div className="Event Day">
-          <div className="Close" onClick={(e) => closeEvent()}>X</div>
-          <div>{eventData.type}</div>
-          <div>{eventData.name}</div>
-          <div>{eventData.description}</div>
-        </div>
+        <Card>
+          <div className="Event Open">
+            <a className="Close" href="#" onClick={(e) => closeEvent()}>X</a>
+            <div>{eventData.type}</div>
+            <div>{eventData.name}</div>
+            <div>{eventData.description}</div>
+          </div>
+        </Card>
       )}
     </div>
   );

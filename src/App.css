@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+.Event.Open > div {
+  font-size: 2rem
+}
+
+.Close {
+  position: absolute;
+  right: 1.1rem;
+  font-size: 1.5rem;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

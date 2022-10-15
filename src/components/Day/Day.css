@@ -11,8 +11,24 @@
     background-color: rgb(58, 189, 189); 
 }
 
+.Today:before {
+    content: "Today";
+}
+
 .Event {
     background-color: rgb(173, 37, 37);
+}
+
+.Event:before {
+    content: "Event";
+}
+
+.Event.Today {
+    background: linear-gradient(to left, rgb(58, 189, 189), rgb(173, 37, 37));
+}
+
+.Event.Today:before {
+    content: "Event Today"
 }
 
 a, a:visited, a:active, a:hover {
