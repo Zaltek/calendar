@@ -1,4 +1,24 @@
 .Day {
     height: 6rem;
-    border: 1px solid black;
+    border: 1px solid rgb(19, 17, 17);
+}
+
+.Date {
+    font-size: 1.8rem;
+}
+
+.Today {
+    background-color: rgb(58, 189, 189); 
+}
+
+.Event {
+    background-color: rgb(173, 37, 37);
+}
+
+a, a:visited, a:active, a:hover {
+    color: #fff;
+}
+
+.MuiCard-root {
+    margin: .25rem;
 }
