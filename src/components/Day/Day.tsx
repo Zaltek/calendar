@@ -7,12 +7,14 @@ import Card from '@mui/material/Card';
 export interface DayProps {
   date: number;
   eventObject: EventObject;
+  showEvent: (eventObject: EventObject) => void;
 }
 
 export interface EventObject {
   name: string;
   description: string;
   type: string;
+  datetime: Date;
 }
 
 /*
@@ -24,12 +26,6 @@ feel testing is important, and write quality tests using the framework of your c
 */
 
 const Day: FC<DayProps> = (props): ReactElement => {
-  const openEventModal = (eventObject: EventObject, e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    alert(JSON.stringify(eventObject))
-  }
-
-  let dayClasses;
   const event = props.eventObject?.name? "Event":"";
   const today = new Date().getDate() === props.date? "Today":"";
 
@@ -38,7 +34,7 @@ const Day: FC<DayProps> = (props): ReactElement => {
       <div className={`Day ${event} ${today}`} data-testid="Day">
         <div className="Date">{props.date}</div>
         {props.eventObject && props.eventObject.name && (
-          <a href="#" onClick={(e) => openEventModal(props.eventObject, e)}>View Event</a>
+          <a href="#" onClick={(e) => props.showEvent(props.eventObject)}>View Event</a>
         )}
       </div>
     </Card>

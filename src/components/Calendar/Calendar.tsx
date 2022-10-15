@@ -5,6 +5,7 @@ import './Calendar.css';
 export interface CalendarProps {
   event?: EventObject;
   calendarEvents?: Array<EventObject>;
+  showEvent: (eventObject: EventObject) => void;
 }
 
 // Event raw data
@@ -109,6 +110,7 @@ const Calendar: FC<CalendarProps> = (props): ReactElement => {
         <Day date={dayObject.datetime.getDate()} 
           key={index} 
           eventObject={dayObject}
+          showEvent={props.showEvent}
         />
       )
     }
