@@ -1,29 +1,32 @@
+import { render } from '@testing-library/react';
 import React, { FC, ReactElement } from 'react';
+import { isConstructorDeclaration } from 'typescript';
 import './Day.css';
 
 export interface DayProps {
   date: number;
-  event?: EventObject;
+  eventObject: EventObject;
 }
 
 export interface EventObject {
   name: string;
-  date: string;
-  dateObject?: Date;
   description: string;
   type: string;
 }
 
 const Day: FC<DayProps> = (props): ReactElement => {
-  let eventObject;
-  if (props.event) {
-    eventObject = <div className="event-name">{props.event.name}</div>
+  const openEventModal = (eventObject: EventObject, e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    alert(JSON.stringify(eventObject))
   }
+
   return  (
-    <div className="Day" data-testid="Day">
-    <div className="day-date">{props.date}</div>
-    {eventObject}
-  </div>
+    <div className={props.eventObject?.name? 'Event Day':'Day'} data-testid="Day">
+      <div className="day-date">{props.date}</div>
+      {props.eventObject && props.eventObject.name && (
+        <a href="#" onClick={(e) => openEventModal(props.eventObject, e)}>View Event</a>
+      )}
+    </div>
   )
 }
 
