@@ -27,5 +27,6 @@ If the event day is today, highlights with a gradient\
 Click through events for more information
 
 ### `Todo Items`
-Add Month label
-Add Monday->Sunday labels and align appropriately
+Add Month label\
+Add Monday->Sunday labels and align appropriately\
+Fix accessibility issues

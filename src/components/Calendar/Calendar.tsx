@@ -26,7 +26,7 @@ export interface EventObject {
 }
 
 // Sample event data
-const EventsData = [
+const RawData = [
   {
     "name": "Event 1",
     "date": "10/17/2022",
@@ -42,7 +42,7 @@ const EventsData = [
 ];
 
 const Calendar: FC<CalendarProps> = (props): ReactElement => {
-  const [calendarEvents, setCalendarEvents] = useState<Array<EventsData>>(EventsData);
+  const [calendarEvents, setCalendarEvents] = useState<Array<EventsData>>(RawData);
   const [needEvents, setNeedEvents] = useState<Boolean>(false);
   const [monthContainer, setMonthContainer] = useState<Array<EventObject>>([{
         datetime: new Date(),
@@ -51,7 +51,7 @@ const Calendar: FC<CalendarProps> = (props): ReactElement => {
         type: ''
   }])
 
-  const SetDateObjects = () => {
+  const SetupDateObjects = () => {
     /* new Date(year, monthIndex, day)
     Sets up the calendar dates for the month.
     
@@ -101,7 +101,7 @@ const Calendar: FC<CalendarProps> = (props): ReactElement => {
       return
     }
     setCalendarEvents(calendarEvents);
-    SetDateObjects();
+    SetupDateObjects();
   }, [needEvents])
 
   return (
