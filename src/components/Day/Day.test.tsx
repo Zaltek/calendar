@@ -1,5 +1,4 @@
-import React from 'react';
-import { render, screen, getByText, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Day from './Day';
 

@@ -1,5 +1,4 @@
-import React, { FC, ReactElement, useEffect, useState } from 'react';
-import logo from './logo.svg';
+import { FC, ReactElement, useState } from 'react';
 import './App.css';
 import Calendar from './components/Calendar/Calendar';
 import Card from '@mui/material/Card';

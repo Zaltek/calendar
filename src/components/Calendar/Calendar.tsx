@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useEffect, useState } from 'react';
+import { FC, ReactElement, useEffect, useState } from 'react';
 import Day from '../Day/Day';
 import './Calendar.css';
 
@@ -74,6 +74,7 @@ const Calendar: FC<CalendarProps> = (props): ReactElement => {
         type: ''
       };
 
+      // Loop through all events
       for (let index=0; index<calendarEvents.length; index++) {
         eventDate = calendarEvents[index].date;
         // Check if event is today, if so add it
@@ -101,7 +102,6 @@ const Calendar: FC<CalendarProps> = (props): ReactElement => {
     }
     setCalendarEvents(calendarEvents);
     SetDateObjects();
-
   }, [needEvents])
 
   return (

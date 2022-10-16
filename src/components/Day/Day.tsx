@@ -1,6 +1,4 @@
-import { render } from '@testing-library/react';
-import React, { FC, ReactElement } from 'react';
-import { isConstructorDeclaration } from 'typescript';
+import { FC, ReactElement } from 'react';
 import './Day.css';
 import Card from '@mui/material/Card';
 
@@ -16,14 +14,6 @@ export interface EventObject {
   type: string;
   datetime: Date;
 }
-
-/*
-• Selecting a day with a scheduled event needs to show event details somewhere outside of
-the calendar component
-• Write a good README.md
-• Include tests. You do not have to test your full application, but select an area where you
-feel testing is important, and write quality tests using the framework of your choice
-*/
 
 const Day: FC<DayProps> = (props): ReactElement => {
   const event = props.eventObject?.name? "Event":"";
