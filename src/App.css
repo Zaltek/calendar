@@ -3,11 +3,19 @@
 }
 
 .Event.Open > div {
-  font-size: 2rem
+  font-size: 2rem;
 }
 
-.Close {
-  position: absolute;
-  right: 1.1rem;
-  font-size: 1.5rem;
+.left {
+  float: left;
+  margin-right: 1.5rem;
+}
+
+.Container {
+  max-width: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  flex-direction: column;
 }

@@ -1,4 +1,13 @@
 .Calendar {
+    width: 100%;
+}
+
+.Month {
+    font-size: 4.5rem;
+    font-weight: 300;
+}
+
+.Days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
 }

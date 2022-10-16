@@ -29,7 +29,7 @@ export interface EventObject {
 const RawData = [
   {
     "name": "Event 1",
-    "date": "10/15/2022",
+    "date": "10/16/2022",
     "description": "You are invited to my party",
     "type": "Birthday"
   },
@@ -42,14 +42,35 @@ const RawData = [
 ];
 
 const Calendar: FC<CalendarProps> = (props): ReactElement => {
-  const [calendarEvents, setCalendarEvents] = useState<Array<EventsData>>(RawData);
-  const [needEvents, setNeedEvents] = useState<Boolean>(false);
-  const [monthContainer, setMonthContainer] = useState<Array<EventObject>>([{
+  const [calendarEvents, setCalendarEvents] = useState<Array<EventsData>>(RawData),
+  [needEvents, setNeedEvents] = useState<Boolean>(false),
+  [month, setMonth] = useState<String>(''),
+  [monthContainer, setMonthContainer] = useState<Array<EventObject>>([{
         datetime: new Date(),
         name: '',
         description: '',
         type: ''
-  }])
+  }]),
+  today = new Date();
+
+  const getMonth = () => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
+
+    setMonth(months[today.getMonth()])
+  }
 
   const SetupDateObjects = () => {
     /* new Date(year, monthIndex, day)
@@ -57,8 +78,7 @@ const Calendar: FC<CalendarProps> = (props): ReactElement => {
     
     Loop through up to 31 times. */
     const monthArray = [];
-    let today = new Date(),
-    todayDatetime;
+    let todayDatetime;
 
     for (let day=1; day<32; day++) {
       todayDatetime = new Date(today.getFullYear(), today.getMonth(), day);
@@ -100,23 +120,27 @@ const Calendar: FC<CalendarProps> = (props): ReactElement => {
     if (!calendarEvents.length || needEvents) {
       return
     }
+    getMonth();
     setCalendarEvents(calendarEvents);
     SetupDateObjects();
   }, [needEvents])
 
   return (
   <div className="Calendar" data-testid="Calendar">
-    <Suspense fallback={<div>Loading</div>}>
-    { monthContainer.length &&
-      monthContainer.map((dayObject, index) => 
-          <Day date={dayObject.datetime.getDate()} 
-            key={index} 
-            eventObject={dayObject}
-            showEvent={props.showEvent}
-          />
-      )
-    }
-    </Suspense>
+    <div className="Month">{month}</div>
+    <div className="Days">
+      <Suspense fallback={<div>Loading</div>}>
+      { monthContainer.length &&
+        monthContainer.map((dayObject, index) => 
+            <Day date={dayObject.datetime.getDate()} 
+              key={index} 
+              eventObject={dayObject}
+              showEvent={props.showEvent}
+            />
+        )
+      }
+      </Suspense>
+    </div>
   </div>)
 }
 
