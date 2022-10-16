@@ -7,6 +7,7 @@ export interface EventObject {
   name: string;
   description: string;
   type: string;
+  datetime: Date;
 }
 
 const App: FC = (): ReactElement => {
@@ -14,7 +15,8 @@ const App: FC = (): ReactElement => {
   const [eventData, setEventData] = useState<EventObject>({
     name: "",
     description: "",
-    type: ""
+    type: "",
+    datetime: new Date()
   });
 
   const showEvent = (eventObject: EventObject):void => {
@@ -33,6 +35,7 @@ const App: FC = (): ReactElement => {
         <Card>
           <div className="Event Open">
             <a className="Close" href="#" onClick={(e) => closeEvent()}>X</a>
+            <div>{eventData.datetime.toDateString()}</div>
             <div>{eventData.type}</div>
             <div>{eventData.name}</div>
             <div>{eventData.description}</div>
