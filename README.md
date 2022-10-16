@@ -24,8 +24,8 @@ Displays calendar of the current month\
 Highlights the current day and labels it\
 Highlights event days\
 If the event day is today, highlights with a gradient\
-Click through events for more information\
+Click through events for more information
 
 ### `Todo Items`
 Add Month label
-Add Monday->Sunday labels and align appropriately\
+Add Monday->Sunday labels and align appropriately
