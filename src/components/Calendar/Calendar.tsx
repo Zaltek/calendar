@@ -106,17 +106,17 @@ const Calendar: FC<CalendarProps> = (props): ReactElement => {
 
   return (
   <div className="Calendar" data-testid="Calendar">
+    <Suspense fallback={<div>Loading</div>}>
     { monthContainer.length &&
       monthContainer.map((dayObject, index) => 
-        <Suspense fallback={<div>Loading</div>}>
           <Day date={dayObject.datetime.getDate()} 
             key={index} 
             eventObject={dayObject}
             showEvent={props.showEvent}
           />
-        </Suspense>
       )
     }
+    </Suspense>
   </div>)
 }
 
