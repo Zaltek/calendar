@@ -29,7 +29,7 @@ const App: FC = (): ReactElement => {
 
   return (
     <div className="App">
-      <Calendar showEvent={showEvent} />
+      <Calendar showEvent={showEvent} key={1}/>
       { hasEvent && (
         <Card>
           <div className="Event Open">

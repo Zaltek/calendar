@@ -33,7 +33,7 @@ const Day: FC<DayProps> = (props): ReactElement => {
     <Card >
       <div className={`Day ${event} ${today}`} data-testid="Day">
         <div className="Date">{props.date}</div>
-        {props.eventObject && props.eventObject.name && (
+        {props.eventObject.name && (
           <a href="#" onClick={(e) => props.showEvent(props.eventObject)}>View</a>
         )}
       </div>

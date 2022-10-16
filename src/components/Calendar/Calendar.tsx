@@ -6,6 +6,7 @@ export interface CalendarProps {
   event?: EventObject;
   calendarEvents?: Array<EventObject>;
   showEvent: (eventObject: EventObject) => void;
+  key: number;
 }
 
 // Event raw data
@@ -28,7 +29,7 @@ export interface EventObject {
 const EventsData = [
   {
     "name": "Event 1",
-    "date": "10/15/2022",
+    "date": "10/17/2022",
     "description": "You are invited to my party",
     "type": "Birthday"
   },
