@@ -17,6 +17,7 @@
 
 .Event {
     background-color: rgb(173, 37, 37);
+    cursor: pointer;
 }
 
 .Event:before {

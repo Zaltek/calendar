@@ -30,3 +30,4 @@ Click through events for more information
 Add Month label\
 Add Monday->Sunday labels and align appropriately\
 Fix accessibility issues
+Split event modal out into component

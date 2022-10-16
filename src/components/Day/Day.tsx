@@ -21,10 +21,13 @@ const Day: FC<DayProps> = (props): ReactElement => {
 
   return  (
     <Card >
-      <div className={`Day ${event} ${today}`} data-testid="Day">
+      <div onClick={props.eventObject.name?  function(e) {
+         props.showEvent(props.eventObject)} :
+        undefined } 
+        className={`Day ${event} ${today}`} data-testid="Day">
         <div className="Date">{props.date}</div>
         {props.eventObject.name && (
-          <a href="#" onClick={(e) => props.showEvent(props.eventObject)}>View</a>
+          <a href="#">View</a>
         )}
       </div>
     </Card>
