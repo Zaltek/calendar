@@ -29,13 +29,13 @@ export interface EventObject {
 const RawData = [
   {
     "name": "Event 1",
-    "date": "10/16/2022",
+    "date": "10/11/2022",
     "description": "You are invited to my party",
     "type": "Birthday"
   },
   {
     "name": "Event 2",
-    "date": "10/19/2022",
+    "date": "10/20/2022",
     "description": "Bob's Retirement",
     "type": "Work"
   }

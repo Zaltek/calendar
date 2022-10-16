@@ -7,8 +7,13 @@
     font-size: 1.8rem;
 }
 
+.Day.Event, Day.Today {
+    color: #fff;
+}
+
 .Today {
-    background-color: rgb(58, 189, 189); 
+    background-color: #1DB1FF;
+    color: #fff;
 }
 
 .Today:before {
@@ -16,7 +21,7 @@
 }
 
 .Event {
-    background-color: rgb(173, 37, 37);
+    background-color: #263146;
     cursor: pointer;
 }
 
@@ -25,7 +30,7 @@
 }
 
 .Event.Today {
-    background: linear-gradient(to left, rgb(58, 189, 189), rgb(173, 37, 37));
+    background: linear-gradient(to left,#263146, #1DB1FF);
 }
 
 .Event.Today:before {
