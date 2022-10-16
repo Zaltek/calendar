@@ -1,6 +1,6 @@
-import { FC, ReactElement, useEffect, useState } from 'react';
-import Day from '../Day/Day';
+import React, { Suspense, FC, ReactElement, useEffect, useState } from 'react';
 import './Calendar.css';
+const Day = React.lazy(() => import('../Day/Day'))
 
 export interface CalendarProps {
   event?: EventObject;
@@ -29,7 +29,7 @@ export interface EventObject {
 const RawData = [
   {
     "name": "Event 1",
-    "date": "10/17/2022",
+    "date": "10/15/2022",
     "description": "You are invited to my party",
     "type": "Birthday"
   },
@@ -108,11 +108,13 @@ const Calendar: FC<CalendarProps> = (props): ReactElement => {
   <div className="Calendar" data-testid="Calendar">
     { monthContainer.length &&
       monthContainer.map((dayObject, index) => 
-        <Day date={dayObject.datetime.getDate()} 
-          key={index} 
-          eventObject={dayObject}
-          showEvent={props.showEvent}
-        />
+        <Suspense fallback={<div>Loading</div>}>
+          <Day date={dayObject.datetime.getDate()} 
+            key={index} 
+            eventObject={dayObject}
+            showEvent={props.showEvent}
+          />
+        </Suspense>
       )
     }
   </div>)

@@ -1,7 +1,7 @@
-import { FC, ReactElement, useState } from 'react';
+import React, { Suspense, FC, ReactElement, useState } from 'react';
 import './App.css';
-import Calendar from './components/Calendar/Calendar';
 import Card from '@mui/material/Card';
+const Calendar = React.lazy(() => import('./components/Calendar/Calendar'))
 
 export interface EventObject {
   name: string;
@@ -30,7 +30,9 @@ const App: FC = (): ReactElement => {
 
   return (
     <div className="App">
-      <Calendar showEvent={showEvent} key={1}/>
+      <Suspense fallback={<div>Loading</div>}>
+        <Calendar showEvent={showEvent} key={1}/>
+      </Suspense>
       { hasEvent && (
         <Card>
           <div className="Event Open">
